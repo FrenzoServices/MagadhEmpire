@@ -7,3 +7,5 @@ export type {
   BreadcrumbItem,
   ContentNode,
 } from "./content";
+
+export type { BlogPost, BlogSection } from "./blog";
