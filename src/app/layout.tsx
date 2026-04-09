@@ -4,6 +4,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/common/JsonLd";
 import { generateWebsiteJsonLd } from "@/lib/seo";
+import { ThemeProvider } from "@/components/common/ThemeProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -50,14 +51,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
       <body style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-        <JsonLd data={generateWebsiteJsonLd()} />
-        <Header />
-        <main style={{ flex: 1 }}>
-          {children}
-        </main>
-        <Footer />
+        <ThemeProvider>
+          <JsonLd data={generateWebsiteJsonLd()} />
+          <Header />
+          <main style={{ flex: 1 }}>
+            {children}
+          </main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

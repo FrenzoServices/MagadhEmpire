@@ -1,0 +1,52 @@
+.toggle {
+  background: rgba(212, 175, 55, 0.1); /* Subtle gold tint */
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 10px; /* Slightly rounded squares look more modern/professional */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--color-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.toggle:hover {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+}
+
+.toggle:active {
+  transform: translateY(0);
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.icon {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:global(.dark) .toggle {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+:global(.dark) .toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-primary-light);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.placeholder {
+  width: 38px;
+  height: 38px;
+}

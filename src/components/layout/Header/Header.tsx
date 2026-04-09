@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAV_ITEMS } from "@/lib/constants/navigation";
+import { ThemeToggle } from "@/components/common/ThemeToggle";
 import styles from "./Header.module.css";
 
 export default function Header() {
@@ -20,30 +21,39 @@ export default function Header() {
           Magadh Empire
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className={styles.nav}>
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`${styles.navLink} ${
-                pathname === item.href ? styles.navLinkActive : ""
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        {/* Action Group (Toggle + Nav/Menu) */}
+        <div className={styles.actions}>
+          {/* Desktop Navigation */}
+          <nav className={styles.nav}>
+            <div className={styles.toggleWrapper}>
+              <ThemeToggle />
+            </div>
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`${styles.navLink} ${
+                  pathname === item.href ? styles.navLinkActive : ""
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
 
-        {/* Mobile Toggle */}
-        <button
-          className={styles.menuToggle}
-          onClick={toggleMenu}
-          aria-label="Toggle navigation menu"
-          aria-expanded={mobileOpen}
-        >
-          {mobileOpen ? "✕" : "☰"}
-        </button>
+          {/* Mobile Actions */}
+          <div className={styles.mobileActions}>
+            <ThemeToggle />
+            <button
+              className={styles.menuToggle}
+              onClick={toggleMenu}
+              aria-label="Toggle navigation menu"
+              aria-expanded={mobileOpen}
+            >
+              {mobileOpen ? "✕" : "☰"}
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Mobile Navigation */}
